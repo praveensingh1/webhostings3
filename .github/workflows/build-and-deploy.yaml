@@ -8,10 +8,10 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     env:
-      BUCKET: www.myawsbucket-hosting
+      BUCKET: www.mybucket-2
       DIST: build
       REGION: eu-west-2
-      DIST_ID: E2FN830YL0QF9W
+      DIST_ID: EBBGZVYRM7S14
 
     steps:
     - name: Checkout
