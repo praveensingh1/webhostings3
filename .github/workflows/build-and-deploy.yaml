@@ -10,9 +10,11 @@ jobs:
     env:
       BUCKET: www.mybucket-2
       DIST: build
-      REGION: eu-west-2
+      AWS_REGION: eu-west-2
       DIST_ID: EBBGZVYRM7S14
-
+    permissions:
+      id-token: write
+      contents: read
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -20,9 +22,9 @@ jobs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.REGION }}
+        role-to-assume: arn:aws:iam::432747295061:role/gitHub-actions-role
+        role-session-name: GitHub-Action-Role
+        aws-region: ${{ env.AWS_REGION }}
 
     # - uses: actions/setup-node@v2
     #   with:
